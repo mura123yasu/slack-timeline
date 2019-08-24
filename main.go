@@ -34,6 +34,10 @@ func main() {
 			return err
 		}
 
+		if !verifyToken(req.Token) {
+			return c.JSON(http.StatusForbidden, "Invalid Access Token")
+		}
+
 		var data domain.SlackResponse
 		switch req.Text {
 		case "":
@@ -41,7 +45,8 @@ func main() {
 		case "fin":
 			data = command.Aggregate(*req)
 		default:
-			data = command.Cache(*req)
+			command.Cache(*req)
+			data = command.Log(*req)
 		}
 
 		return c.JSON(http.StatusOK, data)
@@ -52,5 +57,20 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	e.Logger.Fatal(e.Start(":" + port))
+	e.Logger.Info(e.Start(":" + port))
+}
+
+func verifyToken(token string) bool {
+	// secretToken := os.Getenv("TOKEN")
+
+	// TODO: skip verification now
+	// if secretToken == "" {
+	// 	fmt.Println("target verification token not registered")
+	// 	return false
+	// }
+
+	// if token != secretToken {
+	// 	return false
+	// }
+	return true
 }
