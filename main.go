@@ -45,7 +45,8 @@ func main() {
 		case "fin":
 			data = command.Aggregate(*req)
 		default:
-			data = command.Cache(*req)
+			command.Cache(*req)
+			data = command.Log(*req)
 		}
 
 		return c.JSON(http.StatusOK, data)
