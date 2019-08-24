@@ -4,10 +4,10 @@ import (
 	"github.com/mura123yasu/slack-timeline/domain"
 )
 
-// return chart of aggregated result
-func Chart(req domain.SlackRequest) domain.SlackResponse {
+// log task
+func Log(req domain.SlackRequest) domain.SlackResponse {
 	res := domain.SlackResponse{
-		Text:         "chart result",
+		Text:         "[slack-timeline]" + req.Text,
 		Channel:      req.ChannelName,
 		ResponseType: "ephemeral",
 	}

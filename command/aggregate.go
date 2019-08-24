@@ -9,7 +9,7 @@ func Aggregate(req domain.SlackRequest) domain.SlackResponse {
 	res := domain.SlackResponse{
 		Text:         "Aggreegated result",
 		Channel:      req.ChannelName,
-		ResponseType: "in_channel",
+		ResponseType: "ephemeral",
 	}
 	return res
 }
