@@ -9,7 +9,7 @@ func Chart(req domain.SlackRequest) domain.SlackResponse {
 	res := domain.SlackResponse{
 		Text:         "chart result",
 		Channel:      req.ChannelName,
-		ResponseType: "in_channel",
+		ResponseType: "ephemeral",
 	}
 	return res
 }

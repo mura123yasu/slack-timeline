@@ -9,7 +9,7 @@ func Log(req domain.SlackRequest) domain.SlackResponse {
 	res := domain.SlackResponse{
 		Text:         "[slack-timeline]" + req.Text,
 		Channel:      req.ChannelName,
-		ResponseType: "in_channel",
+		ResponseType: "ephemeral",
 	}
 	return res
 }
