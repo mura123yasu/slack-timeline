@@ -5,6 +5,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
@@ -34,6 +35,10 @@ func main() {
 			return err
 		}
 
+		if !verifyToken(req.Token) {
+			return c.JSON(http.StatusForbidden, "Invalid Access Token")
+		}
+
 		var data domain.SlackResponse
 		switch req.Text {
 		case "":
@@ -52,5 +57,19 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	e.Logger.Fatal(e.Start(":" + port))
+	e.Logger.Info(e.Start(":" + port))
+}
+
+func verifyToken(token string) bool {
+	secretToken := os.Getenv("TOKEN")
+
+	if secretToken == "" {
+		fmt.Println("target verification token not registered")
+		return false
+	}
+
+	if token != secretToken {
+		return false
+	}
+	return true
 }
