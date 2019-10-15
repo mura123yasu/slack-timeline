@@ -67,7 +67,7 @@ docker run --name slack-timeline-container -d -e "PORT=8000" -p 8000:8000 -t sla
 
 ## Deploy to Cloud Run
 ### from master branch
-[![Run on Google Cloud](https://storage.googleapis.com/cloudrun/button.svg)](https://console.cloud.google.com/cloudshell/editor?shellonly=true&cloudshell_image=gcr.io/cloudrun/button&cloudshell_git_repo=https://github.com/mura123yasu/slack-timeline.git)
+[![Run on Google Cloud](https://storage.googleapis.com/cloudrun/button.svg)](https://deploy.cloud.run)
 
 ### from staging branch
-[![Run on Google Cloud](https://storage.googleapis.com/cloudrun/button.svg)](https://console.cloud.google.com/cloudshell/editor?shellonly=true&cloudshell_image=gcr.io/cloudrun/button&cloudshell_git_repo=https://github.com/mura123yasu/slack-timeline.git&cloudshell_git_branch=staging)
+[![Run on Google Cloud](https://storage.googleapis.com/cloudrun/button.svg)](https://deploy.cloud.run/?revision=staging)
